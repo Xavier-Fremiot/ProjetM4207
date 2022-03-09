@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+  <h1>upload d'un document</h1>
+
+<form action="/uploadDocument" method="POST">
+  <fieldset>
+    <legend>Formulaire d'upload de Document</legend>
+    {# le premier #}
+    <div class="form-group">
+      <label for="exampleInputEmail1" class="form-label mt-4">Nom</label>
+      <input type="text" name="nom" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nom du document">
+    </div>
+    {# le deuxieme #}
+    <div class="form-group">
+      <label for="exampleInputPassword1" class="form-label mt-4">Genre</label>
+      <select name="genre"class="form-control">
+	  {% for item in genres %}
+		<option value={{item.id}}> {{ item.type }}   </option>
+		{% endfor %}
+	  </select>
+    </div>
+    {# le troisieme #}
+       <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="choixBox" id="flexCheckChecked" checked="">
+        <label class="form-check-label" for="flexCheckChecked">
+        Document actif ? 
+        </label>
+      </div>
+    {# le quatrieme #}
+     <div class="form-group">
+      <label for="exampleInputPassword1" class="form-label mt-4">Utilisateur ayant accès au fichier</label>
+      <select name="user"class="form-control">
+	  {% for item in user %}
+		<option value={{item.id}}> {{ item.email }}   </option>
+		{% endfor %}
+	  </select>
+    </div>
+
+    {# fin de machin #}
+	<button type="submit" class="btn btn-primary">Envoyer</button>
+</form>
+{% endblock %}

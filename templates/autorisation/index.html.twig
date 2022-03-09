@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Autorisation index{% endblock %}
+
+{% block body %}
+    <h1>Autorisation index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Lecture</th>
+                <th>Ecriture</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for autorisation in autorisations %}
+            <tr>
+                <td>{{ autorisation.id }}</td>
+                <td>{{ autorisation.lecture }}</td>
+                <td>{{ autorisation.ecriture }}</td>
+                <td>
+                    <a href="{{ path('autorisation_show', {'id': autorisation.id}) }}">show</a>
+                    <a href="{{ path('autorisation_edit', {'id': autorisation.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('autorisation_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Autorisation{% endblock %}
+
+{% block body %}
+    <h1>Create new Autorisation</h1>
+
+    {{ include('autorisation/_form.html.twig') }}
+
+    <a href="{{ path('autorisation_index') }}">back to list</a>
+{% endblock %}
